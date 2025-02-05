@@ -184,20 +184,71 @@ class CaixaMercado(QWidget):
         self.label_direita.setStyleSheet("QLabel{background-color:yellow}")
 
         # =================== CLIENTE ==============================
+        
         self.label_cliente = QLabel()
 
-        self.layout_h_cliente = QVBoxLayout()
+        self.layout_h_cliente = QHBoxLayout()
+        
+        self.label_clien = QLabel("Cliente:")
+        self.edit_clien = QLineEdit("1 - consumidor final")
 
-        self.label_clien = QLabel("Cliente")
-        self.edit_clien = QLineEdit("1 - consumidor")
-
-        self.layout_v_direita.addWidget(self.label_clien)
-        self.layout_v_direita.addWidget(self.edit_clien)
+        self.layout_h_cliente.addWidget(self.label_clien)
+        self.layout_h_cliente.addWidget(self.edit_clien)
 
         self.label_cliente.setLayout(self.layout_h_cliente)
 
         self.layout_v_direita.addWidget(self.label_cliente)
+         #######################################
+        self.label_vendedor = QLabel()
 
+        self.layout_v_vendedor = QHBoxLayout()
+
+        self.label_vendedo = QLabel("Vendedor:")
+        self.edit_vendedo = QLineEdit("999 - SYNDATA")
+
+        self.layout_v_vendedor.addWidget(self.label_vendedo)
+        self.layout_v_vendedor.addWidget(self.edit_vendedo )
+
+        self.label_vendedor.setLayout(self.layout_v_vendedor)
+
+        self.layout_v_direita.addWidget(self.label_vendedor)
+        ######################################################
+        self.label_pagamento =  QLabel()
+
+        self.layout_v_pagamento = QHBoxLayout()
+
+        self.label_pagament = QLabel("Forma de pagamento:")
+
+        self.box_pagament = QComboBox(self)
+        self.box_pagament.addItems(["Dinheiro","Cartão","Pix","Boleto"])
+        self.edit_pagamento = QLineEdit("R$ 0.00")
+
+        self.layout_v_pagamento.addWidget(self.label_pagament)
+        self.layout_v_pagamento.addWidget(self.edit_pagamento)
+        self.layout_v_pagamento.addWidget(self.box_pagament)
+
+        self.label_pagamento.setLayout(self.layout_v_pagamento)
+
+        self.layout_v_direita.addWidget(self.label_pagamento)
+        ######################################################
+
+        self.label_resultado = QLabel()
+        self.layout_h_resultado = QHBoxLayout()
+
+        self.edit_resultado = QLineEdit()
+
+        self.layout_h_resultado.addWidget(self.edit_resultado)
+
+        self.label_resultado.setLayout(self.layout_h_resultado)
+
+        self.layout_v_direita.addWidget(self.label_resultado)
+
+
+
+
+
+
+        self.label_direita.setLayout(self.layout_v_direita)
 
 
 
