@@ -7,13 +7,29 @@ class CaixaMercado(QWidget):
 
         # Vamos configurar a geometria da tela. Setandos valores de posição X e Y,
         # além de largura e altura
-        self.setGeometry(500,100,700,800)
+        self.setGeometry(500,100,700,600)
 
         # Texto para a barra de título
         self.setWindowTitle("Caixa")
 
         #Layout vertical da tela inteira
         self.layout_v_total = QVBoxLayout()
+        # self.setStyleSheet("""
+        #     QLabel {
+        #         font-size: 10pt;
+        #         padding: 1px;               /* Espaçamento interno */
+        #         margin: 0px;                /* Sem margem externa */
+        #     }
+        #     QLineEdit, QComboBox {
+        #         padding: 3px;               /* Espaçamento interno */
+        #         margin: 0px;                /* Sem margem entre campos */
+        #         border: 1px solid #ccc;     /* Borda leve para destaque */
+        #         border-radius: 4px;         /* Bordas arredondadas */
+        #     }
+        #     QWidget {
+        #         background-color: #f9f9f9;  /* Cor de fundo suave */
+        #     }
+        # """)
 
         #Label titulo
         self.label_titulo = QLabel("Finalizar Venda")
