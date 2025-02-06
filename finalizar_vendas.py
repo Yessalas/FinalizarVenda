@@ -7,43 +7,19 @@ class CaixaMercado(QWidget):
 
         # Vamos configurar a geometria da tela. Setandos valores de posição X e Y,
         # além de largura e altura
-        self.setGeometry(500,100,700,600)
+        self.setFixedSize(700,450)
 
         # Texto para a barra de título
         self.setWindowTitle("Caixa")
 
         #Layout vertical da tela inteira
         self.layout_v_total = QVBoxLayout()
-        # self.setStyleSheet("""
-        #     QLabel {
-        #         font-size: 10pt;
-        #         padding: 1px;               /* Espaçamento interno */
-        #         margin: 0px;                /* Sem margem externa */
-        #     }
-        #     QLineEdit, QComboBox {
-        #         padding: 3px;               /* Espaçamento interno */
-        #         margin: 0px;                /* Sem margem entre campos */
-        #         border: 1px solid #ccc;     /* Borda leve para destaque */
-        #         border-radius: 4px;         /* Bordas arredondadas */
-        #     }
-        #     QWidget {
-        #         background-color: #f9f9f9;  /* Cor de fundo suave */
-        #     }
-        # """)
-
         #Label titulo
         self.label_titulo = QLabel("Finalizar Venda")
-        self.label_titulo.setStyleSheet("QLabel{background-color:White ; font-size:13pt}")
-        self.label_titulo.setFixedSize(700,50)
+        self.label_titulo.setStyleSheet("QLabel{background-color:White ; font-size:11pt}")
+        self.label_titulo.setFixedSize(680,50)
         # adicionar a label de titulo ao layout
         self.layout_v_total.addWidget(self.label_titulo)
-
-
-
-
-
-
-
         #Label dados
         self.label_dados = QLabel()
 
@@ -115,8 +91,8 @@ class CaixaMercado(QWidget):
         # na coluna da esquerda
         self.label_esquerda.setLayout(self.layout_v_esquerda)
 
-        self.label_esquerda.setStyleSheet("QLabel{background-color:blue}")
-        self.label_esquerda.setFixedSize(200,320)
+        self.label_esquerda.setStyleSheet("QLabel{background-color:#c3c3c3}")
+        self.label_esquerda.setFixedSize(200,240)
         # adicionar a label da esquerda no layout 
         # horizontal
         self.layout_h_dados.addWidget(self.label_esquerda)
@@ -197,7 +173,7 @@ class CaixaMercado(QWidget):
         # criar label da direita
         self.label_direita = QLabel()
         self.layout_v_direita = QVBoxLayout()
-        self.label_direita.setStyleSheet("QLabel{background-color:yellow}")
+        self.label_direita.setStyleSheet("QLabel{background-color:#ffffff}")
 
         # =================== CLIENTE ==============================
         
@@ -214,7 +190,8 @@ class CaixaMercado(QWidget):
         self.label_cliente.setLayout(self.layout_h_cliente)
 
         self.layout_v_direita.addWidget(self.label_cliente)
-         #######################################
+        # =================== FIM CLIENTE ==============================
+        # =================== VENDEDOR  ==============================
         self.label_vendedor = QLabel()
 
         self.layout_v_vendedor = QHBoxLayout()
@@ -228,7 +205,8 @@ class CaixaMercado(QWidget):
         self.label_vendedor.setLayout(self.layout_v_vendedor)
 
         self.layout_v_direita.addWidget(self.label_vendedor)
-        ######################################################
+        # =================== FIM VENDEDOR ==============================
+        # =================== PAGAMENTO ==============================
         self.label_pagamento =  QLabel()
 
         self.layout_v_pagamento = QHBoxLayout()
@@ -246,57 +224,76 @@ class CaixaMercado(QWidget):
         self.label_pagamento.setLayout(self.layout_v_pagamento)
 
         self.layout_v_direita.addWidget(self.label_pagamento)
-        ######################################################
+        # =================== FIM PAGAMENTO ==============================
+        # =================== RESULTADO ==============================
 
         self.label_resultado = QLabel()
         self.layout_h_resultado = QHBoxLayout()
 
         self.edit_resultado = QLineEdit()
+        
 
         self.layout_h_resultado.addWidget(self.edit_resultado)
 
         self.label_resultado.setLayout(self.layout_h_resultado)
 
         self.layout_v_direita.addWidget(self.label_resultado)
+        # =================== FIM RESULTADO ==============================
 
-
-
-
-
-
+        # Adicionar o layout vertical da direita
+        # na coluna da direita
         self.label_direita.setLayout(self.layout_v_direita)
 
-
-
-
-
-        
         # adicionar a label da direita no layout
-         
         # horizontal
         self.layout_h_dados.addWidget(self.label_direita)
         
 
 
         self.label_dados.setLayout(self.layout_h_dados)
-        self.label_dados.setStyleSheet("QLabel{background-color:red}")
+        self.label_dados.setStyleSheet("QLabel{background-color:#c3c3c3}")
         self.layout_v_total.addWidget(self.label_dados)
-        
-        
-
-
-
-
-
-
-
-
-
+        # =================== COMEÇO RODAPÉ ==============================
         #Label rodape
         self.label_rodape = QLabel()
-        self.label_rodape.setStyleSheet("QLabel{background-color:green}")
+        self.layout_rodape = QVBoxLayout()
+        self.label_rodape.setStyleSheet("QLabel{background-color:#ffffff}")
+        self.label_rodape.setFixedSize(680,110)
         self.layout_v_total.addWidget(self.label_rodape)
+        # =================== EMISSÃO  ==============================
+        self.label_emissao = QLabel()
+        self.layout_emissao = QHBoxLayout()
 
+        self.label_docEmissao = QLabel("Selecione o documento de emissão:")
+        self.label_docEmissao.setStyleSheet("QLabel{font-size:10pt}")
+
+        self.layout_emissao.addWidget(self.label_docEmissao)
+        self.label_emissao.setLayout(self.layout_emissao)
+
+        self.layout_rodape.addWidget(self.label_emissao)
+        # =================== FIM EMISSÃO  ==============================
+        # =================== EMISSÃO (BOTÕES)  ==============================
+        self.label_botoes = QLabel()
+        self.layout_botoes = QHBoxLayout()
+
+        self.rodape_button1 = QPushButton('(ESC)Sair', self)
+        self.rodape_button2 = QPushButton('(F6)Cupom Fiscal', self)
+        self.rodape_button3 = QPushButton('(F7)Pedido de Venda', self)
+        self.rodape_button4 = QPushButton('(F8)NFC-e Online', self)
+        self.rodape_button5 = QPushButton('(F9)NFC-e Offline', self)
+
+        self.layout_botoes.addWidget(self.rodape_button1)
+        self.layout_botoes.addWidget(self.rodape_button2)
+        self.layout_botoes.addWidget(self.rodape_button3)
+        self.layout_botoes.addWidget(self.rodape_button4)
+        self.layout_botoes.addWidget(self.rodape_button5)
+
+        self.label_botoes.setLayout(self.layout_botoes)
+
+        self.layout_rodape.addWidget(self.label_botoes)
+
+        # Adicionar o layout vertical do rodape no rodape
+        self.label_rodape.setLayout(self.layout_rodape)
         # adicionar o layout vertical a tela
         self.setLayout(self.layout_v_total)
 
